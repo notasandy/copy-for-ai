@@ -1,0 +1,85 @@
+{
+  "name": "copy-for-ai",
+  "displayName": "Copy for AI",
+  "description": "Copy code with full context for ChatGPT, Claude and other AI assistants",
+  "version": "0.0.1",
+  "publisher": "sandy",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copy-for-ai.support",
+        "title": "Copy for AI: Support the Project"
+      },
+      {
+        "command": "copy-for-ai.copyCode",
+        "title": "Copy Code for AI"
+      },
+      {
+        "command": "copy-for-ai.copyFolder",
+        "title": "Copy Folder for AI"
+      },
+      {
+        "command": "copy-for-ai.copyStructure",
+        "title": "Copy Project Structure"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "copy-for-ai.copyCode",
+          "group": "9_cutcopypaste@4"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "copy-for-ai.copyFolder",
+          "group": "9_cutcopypaste@4",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "copy-for-ai.copyStructure",
+          "group": "9_cutcopypaste@5"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Copy for AI",
+      "properties": {
+        "copyForAI.excludePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["node_modules", ".git", "dist", "*.log", "*.vsix"],
+          "description": "Glob patterns to exclude when copying folders"
+        },
+        "copyForAI.outputFormat": {
+          "type": "string",
+          "enum": ["markdown", "plain", "xml"],
+          "default": "markdown",
+          "description": "Output format for copied content"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "gpt-tokenizer": "^2.1.1",
+    "minimatch": "^10.2.5"
+  }
+}
