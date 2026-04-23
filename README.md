@@ -2,7 +2,6 @@
 
 **Copy code with full context for ChatGPT, Claude and other AI assistants.**
 
-![Demo](media/demo.gif) *(замените на свой скриншот или GIF)*
 
 ## ✨ Features
 
@@ -45,8 +44,8 @@ Available settings (`File` → `Preferences` → `Settings` → `Copy for AI`):
 
 This extension is **completely free**. If you find it useful, please consider supporting:
 
-- [GitHub Sponsors](https://github.com/sponsors/your-github-username)
-- [Buy Me a Coffee](https://buymeacoffee.com/your-username)
+ - [DonationAlerts](donationalerts.com/r/notasandy)
+ - [Full donation page with QR codes](https://notasandy.github.io/copy-for-ai/donate)
 
 ## 📄 License
 

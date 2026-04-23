@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support · Copy for AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #f5f2eb;
+            --ink: #1a1916;
+            --muted: #7a7770;
+            --rule: #d4cfc6;
+            --yellow: #e8c840;
+            --usdt-c: #1a9e72;
+            --btc-c: #c97b1a;
+            --eth-c: #4a6fd4;
+        }
+
+        body {
+            font-family: 'Fraunces', Georgia, serif;
+            background: var(--bg);
+            color: var(--ink);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 64px 32px 100px;
+        }
+
+        .top-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-top: 2px solid var(--ink);
+            border-bottom: 1px solid var(--rule);
+            padding: 10px 0;
+            margin-bottom: 56px;
+        }
+
+        .top-line a {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+        }
+
+        .top-line a:hover { color: var(--ink); }
+
+        .issue {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+        }
+
+        h1 {
+            font-size: clamp(38px, 8vw, 62px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        h1 em {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .lede {
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--muted);
+            max-width: 480px;
+            margin-bottom: 56px;
+        }
+
+        .section-rule {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-rule span {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .section-rule hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid var(--rule);
+        }
+
+        .da-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--yellow);
+            color: var(--ink);
+            padding: 20px 24px;
+            text-decoration: none;
+            border: 1.5px solid var(--ink);
+            transition: transform 0.12s, box-shadow 0.12s;
+            box-shadow: 3px 3px 0 var(--ink);
+            margin-bottom: 56px;
+        }
+
+        .da-link:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+
+        .da-link:active {
+            transform: translate(0, 0);
+            box-shadow: 1px 1px 0 var(--ink);
+        }
+
+        .da-left strong {
+            display: block;
+            font-family: 'Fraunces', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .da-left small {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: #4a4630;
+        }
+
+        .da-arrow {
+            font-size: 22px;
+            font-style: normal;
+            transition: transform 0.12s;
+        }
+
+        .da-link:hover .da-arrow { transform: translate(3px, -3px); }
+
+        .crypto-row {
+            border-top: 1px solid var(--rule);
+            padding: 22px 0;
+            display: grid;
+            grid-template-columns: 140px 1fr auto;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .crypto-row:last-of-type { border-bottom: 1px solid var(--rule); }
+
+        .coin-label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .coin-name {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .coin-net {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+        }
+
+        .coin-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .coin-bar {
+            width: 3px;
+            height: 36px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .addr {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            word-break: break-all;
+            line-height: 1.5;
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .addr:hover { color: var(--ink); }
+
+        .qr-thumb {
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            border: 1px solid var(--rule);
+            padding: 3px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .qr-thumb:hover { border-color: var(--ink); }
+        .qr-thumb img { width: 100%; height: 100%; display: block; }
+
+        .copy-btn {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            background: none;
+            border: 1px solid var(--rule);
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: all 0.1s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover { border-color: var(--ink); color: var(--ink); }
+        .copy-btn.ok { border-color: var(--usdt-c); color: var(--usdt-c); }
+
+        .modal-bg {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(26,25,22,0.65);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-bg.open { display: flex; }
+
+        .modal {
+            background: var(--bg);
+            border: 1.5px solid var(--ink);
+            padding: 28px;
+            text-align: center;
+            max-width: 280px;
+            width: 90%;
+        }
+
+        .modal-coin {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'DM Mono', monospace;
+            color: var(--muted);
+        }
+
+        .modal img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid var(--rule);
+            padding: 8px;
+            background: white;
+            margin-bottom: 14px;
+        }
+
+        .modal-addr {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--muted);
+            word-break: break-all;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .modal-close {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            background: none;
+            border: 1px solid var(--rule);
+            padding: 7px 18px;
+            cursor: pointer;
+            color: var(--muted);
+        }
+
+        .modal-close:hover { border-color: var(--ink); color: var(--ink); }
+
+        .footer {
+            border-top: 2px solid var(--ink);
+            margin-top: 56px;
+            padding-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer p {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .footer a { color: var(--muted); text-decoration: none; }
+        .footer a:hover { color: var(--ink); }
+
+        @media (max-width: 520px) {
+            .crypto-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .coin-label { grid-column: 1 / -1; }
+            .copy-btn { align-self: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="top-line">
+        <a href="https://github.com/notasandy/copy-for-ai">↖ copy-for-ai</a>
+        <span class="issue">support the project</span>
+    </div>
+
+    <h1>Keep it <em>free</em><br>&amp; maintained.</h1>
+    <p class="lede">This extension has no ads, no paywalls, no telemetry. If it saves you time, a small donation goes a long way.</p>
+
+    <div class="section-rule"><span>easiest option</span><hr></div>
+    <a class="da-link" href="https://www.donationalerts.com/r/notasandy" target="_blank" rel="noopener">
+        <div class="da-left">
+            <strong>Donation Alerts</strong>
+            <small>donationalerts.com/r/notasandy</small>
+        </div>
+        <span class="da-arrow">↗</span>
+    </a>
+
+    <div class="section-rule"><span>crypto</span><hr></div>
+
+    <div class="crypto-row">
+        <div class="coin-label">
+            <span class="coin-name" style="color:var(--usdt-c)">USDT</span>
+            <span class="coin-net">TRC-20 · Tron</span>
+        </div>
+        <div class="coin-wrap">
+            <div class="coin-bar" style="background:var(--usdt-c)"></div>
+            <span class="addr" id="a-usdt">TWE4wB9LBa7AdWC2tiACPQgmhSPNNniPT3</span>
+            <div class="qr-thumb" onclick="openQR('USDT · TRC-20','TWE4wB9LBa7AdWC2tiACPQgmhSPNNniPT3','https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=TWE4wB9LBa7AdWC2tiACPQgmhSPNNniPT3')">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=104x104&data=TWE4wB9LBa7AdWC2tiACPQgmhSPNNniPT3" alt="USDT QR">
+            </div>
+        </div>
+        <button class="copy-btn" onclick="copyAddr('a-usdt',this)">copy</button>
+    </div>
+
+    <div class="crypto-row">
+        <div class="coin-label">
+            <span class="coin-name" style="color:var(--btc-c)">Bitcoin</span>
+            <span class="coin-net">BTC</span>
+        </div>
+        <div class="coin-wrap">
+            <div class="coin-bar" style="background:var(--btc-c)"></div>
+            <span class="addr" id="a-btc">1LH6fSjViKuRG7o4LTVwjvdM7QDRSJqcoV</span>
+            <div class="qr-thumb" onclick="openQR('Bitcoin · BTC','1LH6fSjViKuRG7o4LTVwjvdM7QDRSJqcoV','https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=bitcoin:1LH6fSjViKuRG7o4LTVwjvdM7QDRSJqcoV')">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=104x104&data=bitcoin:1LH6fSjViKuRG7o4LTVwjvdM7QDRSJqcoV" alt="BTC QR">
+            </div>
+        </div>
+        <button class="copy-btn" onclick="copyAddr('a-btc',this)">copy</button>
+    </div>
+
+    <div class="crypto-row">
+        <div class="coin-label">
+            <span class="coin-name" style="color:var(--eth-c)">Ethereum</span>
+            <span class="coin-net">ERC-20</span>
+        </div>
+        <div class="coin-wrap">
+            <div class="coin-bar" style="background:var(--eth-c)"></div>
+            <span class="addr" id="a-eth">0x71935c8400cf808e4bde9aaa80c251e4da90dd01</span>
+            <div class="qr-thumb" onclick="openQR('Ethereum · ERC-20','0x71935c8400cf808e4bde9aaa80c251e4da90dd01','https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=ethereum:0x71935c8400cf808e4bde9aaa80c251e4da90dd01')">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=104x104&data=ethereum:0x71935c8400cf808e4bde9aaa80c251e4da90dd01" alt="ETH QR">
+            </div>
+        </div>
+        <button class="copy-btn" onclick="copyAddr('a-eth',this)">copy</button>
+    </div>
+
+    <div class="footer">
+        <p>MIT · <a href="https://github.com/notasandy/copy-for-ai">github.com/notasandy/copy-for-ai</a></p>
+        <p>thank you ♡</p>
+    </div>
+
+</div>
+
+<div class="modal-bg" id="modal" onclick="closeQR(event)">
+    <div class="modal">
+        <div class="modal-coin" id="m-coin"></div>
+        <img id="m-img" src="" alt="QR code">
+        <div class="modal-addr" id="m-addr"></div>
+        <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">close</button>
+    </div>
+</div>
+
+<script>
+function copyAddr(id, btn) {
+    navigator.clipboard.writeText(document.getElementById(id).textContent.trim());
+    btn.textContent = 'copied';
+    btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('ok'); }, 2000);
+}
+function openQR(coin, addr, url) {
+    document.getElementById('m-coin').textContent = coin;
+    document.getElementById('m-addr').textContent = addr;
+    document.getElementById('m-img').src = url;
+    document.getElementById('modal').classList.add('open');
+}
+function closeQR(e) {
+    if (e.target.id === 'modal') document.getElementById('modal').classList.remove('open');
+}
+</script>
+</body>
+</html>

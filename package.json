@@ -4,6 +4,24 @@
   "description": "Copy code with full context for ChatGPT, Claude and other AI assistants",
   "version": "0.0.1",
   "publisher": "sandy",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notasandy/copy-for-ai"
+  },
+  "bugs": {
+    "url": "https://github.com/notasandy/copy-for-ai/issues"
+  },
+  "homepage": "https://github.com/notasandy/copy-for-ai#readme",
+  "keywords": [
+    "ai",
+    "chatgpt",
+    "claude",
+    "copy",
+    "context",
+    "llm",
+    "vscode-extension"
+  ],
   "engines": {
     "vscode": "^1.85.0"
   },

@@ -3,14 +3,14 @@ import * as vscode from 'vscode';
 export async function supportCommand() {
     const items: vscode.QuickPickItem[] = [
         {
-            label: '$(heart) GitHub Sponsors',
-            description: 'Monthly or one-time donation via GitHub',
-            detail: 'https://github.com/sponsors/your-github-username' // ← замените
+            label: '$(gift) DonationAlerts',
+            description: 'Поддержать рублями (карты РФ)',
+            detail: 'https://www.donationalerts.com/r/notasandy'
         },
         {
-            label: '$(coffee) Buy Me a Coffee',
-            description: 'One-time donation',
-            detail: 'https://buymeacoffee.com/your-username' // ← замените
+            label: '$(circuit-board) Crypto & More',
+            description: 'USDT, BTC, ETH – красивая страница с QR',
+            detail: 'https://notasandy.github.io/copy-for-ai/donate'
         }
     ];
 
